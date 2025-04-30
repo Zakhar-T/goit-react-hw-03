@@ -1,14 +1,12 @@
 import Contact from '../Contact/Contact';
 import styles from './ContactList.module.css';
 
-export default function ContactList({ contacts, search }) {
+export default function ContactList({ contacts }) {
   return (
     <ul className={styles.contactList}>
-      {contacts
-        .filter((contact) => contact === search)
-        .map((contact) => (
-          <Contact contact={contact} />
-        ))}
+      {contacts.map((contact) => (
+        <Contact contactInfo={contact} key={contact.id} />
+      ))}
     </ul>
   );
 }

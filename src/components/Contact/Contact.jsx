@@ -1,9 +1,9 @@
 import { FaPhone, FaUser } from 'react-icons/fa6';
 import styles from './Contact.module.css';
 
-export default function Contact({ contact: { id, name, number } }) {
+export default function Contact({ contactInfo: { name, number } }) {
   return (
-    <li className={styles.contact} key={id}>
+    <li className={styles.contact}>
       <div>
         <div className={styles.contactInfo}>
           <FaPhone />

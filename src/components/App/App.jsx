@@ -12,15 +12,15 @@ export default function App() {
   ]);
   const [search, setSearch] = useState('');
 
-  const newSearch = (value) => {
-    setSearch(value);
-  };
+  const filteredContacts = contacts.filter((contact) =>
+    contact.name.toLowerCase().includes(search),
+  );
 
   return (
     <div className={css.container}>
       <h1>Phonebook</h1>
-      <SearchBox value={search} onUpdate={newSearch} />
-      <ContactList contacts={contacts} search={search} />
+      <SearchBox initValue={search} onUpdate={setSearch} />
+      <ContactList contacts={filteredContacts} search={search} />
     </div>
   );
 }

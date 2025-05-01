@@ -29,3 +29,8 @@
 .contactForm button:hover {
   background-color: #2248bc;
 }
+
+.contactFormError {
+  display: block;
+  color: #c62929;
+}

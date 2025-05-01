@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { nanoid } from 'nanoid';
 import ContactList from '../ContactList/ContactList';
 import css from './App.module.css';
 import SearchBox from '../SearchBox/SearchBox';
+import ContactForm from '../ContactForm/ContactForm';
 
 export default function App() {
   const [contacts, setContacts] = useState([
@@ -12,6 +14,13 @@ export default function App() {
   ]);
   const [search, setSearch] = useState('');
 
+  const createContact = (name, number, actions) => {
+    setContacts(() => {
+      return [...contacts, { id: nanoid(), name: name, number: number }];
+    });
+    actions.resetForm();
+  };
+
   const filteredContacts = contacts.filter((contact) =>
     contact.name.toLowerCase().includes(search),
   );
@@ -19,6 +28,7 @@ export default function App() {
   return (
     <div className={css.container}>
       <h1>Phonebook</h1>
+      <ContactForm onAdd={createContact} />
       <SearchBox initValue={search} onUpdate={setSearch} />
       <ContactList contacts={filteredContacts} search={search} />
     </div>
